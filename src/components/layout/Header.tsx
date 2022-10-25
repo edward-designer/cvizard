@@ -1,31 +1,14 @@
 import * as React from 'react';
 
-import UnstyledLink from '@/components/links/UnstyledLink';
-
-const links = [
-  { href: '/', label: 'Route 1' },
-  { href: '/', label: 'Route 2' },
-];
+import Logo from '~/svg/cvizardLogo.svg';
 
 export default function Header() {
   return (
-    <header className='sticky top-0 z-50 bg-white'>
-      <div className='layout flex h-14 items-center justify-between'>
-        <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
-          Home
-        </UnstyledLink>
-        <nav>
-          <ul className='flex items-center justify-between space-x-4'>
-            {links.map(({ href, label }) => (
-              <li key={`${href}${label}`}>
-                <UnstyledLink href={href} className='hover:text-gray-600'>
-                  {label}
-                </UnstyledLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+    <header className='sticky top-0 z-50 col-start-2 bg-bg-primary/70'>
+      <Logo
+        aria-label='Website logo'
+        className='h-20 w-40 max-w-full fill-primary-700 text-primary-700 transition-colors duration-1000'
+      />
     </header>
   );
 }

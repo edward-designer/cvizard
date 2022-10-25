@@ -1,4 +1,3 @@
-// !STARTERCONF You can delete this page
 import clsx from 'clsx';
 import * as React from 'react';
 
@@ -13,11 +12,13 @@ import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 import Skeleton from '@/components/Skeleton';
 
+import { colorList } from '@/constant/themeColor';
+
 type Color = typeof colorList[number];
 
 export default function ComponentsPage() {
   const [mode, setMode] = React.useState<'dark' | 'light'>('light');
-  const [color, setColor] = React.useState<Color>('sky');
+  const [color] = React.useState<Color>('sky');
   function toggleMode() {
     return mode === 'dark' ? setMode('light') : setMode('dark');
   }
@@ -63,30 +64,7 @@ export default function ComponentsPage() {
                   You can change primary color to any Tailwind CSS colors. See
                   globals.css to change your color.
                 </p>
-                <div className='flex flex-wrap gap-2'>
-                  <select
-                    name='color'
-                    id='color'
-                    value={color}
-                    className={clsx(
-                      'block max-w-xs rounded',
-                      mode === 'dark'
-                        ? 'border border-gray-600 bg-dark'
-                        : 'border-gray-300 bg-white',
-                      'focus:border-primary-400 focus:outline-none focus:ring focus:ring-primary-400'
-                    )}
-                    onChange={(e) => setColor(e.target.value as Color)}
-                  >
-                    {colorList.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                  </select>
-                  <ButtonLink href='https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/blob/main/src/styles/colors.css'>
-                    Check list of colors
-                  </ButtonLink>
-                </div>
+                <div className='flex flex-wrap gap-2'></div>
                 <div className='flex flex-wrap gap-2 text-xs font-medium'>
                   <div className='flex h-10 w-10 items-center justify-center rounded bg-primary-50 text-black'>
                     50
@@ -319,28 +297,3 @@ export default function ComponentsPage() {
     </Layout>
   );
 }
-
-const colorList = [
-  'rose',
-  'pink',
-  'fuchsia',
-  'purple',
-  'violet',
-  'indigo',
-  'blue',
-  'sky',
-  'cyan',
-  'teal',
-  'emerald',
-  'green',
-  'lime',
-  'yellow',
-  'amber',
-  'orange',
-  'red',
-  'slate',
-  'gray',
-  'zinc',
-  'neutral',
-  'stone',
-] as const;

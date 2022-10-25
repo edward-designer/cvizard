@@ -1,16 +1,23 @@
-import { AppProps } from 'next/app';
+import type { NextPage } from 'next';
+import type { AppProps } from 'next/app';
+import type { ReactElement, ReactNode } from 'react';
+
+import { ThemeWrapper } from '@/context/theme';
+
+export type NextPageWithLayout<P = unknown, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
 
 import '@/styles/globals.css';
-// !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
 
-/**
- * !STARTERCONF info
- * ? `Layout` component is called in every page using `np` snippets. If you have consistent layout across all page, you can add it here too
- */
-
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
+  return <ThemeWrapper>{getLayout(<Component {...pageProps} />)}</ThemeWrapper>;
 }
 
 export default MyApp;

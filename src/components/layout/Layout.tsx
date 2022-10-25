@@ -1,6 +1,36 @@
-import * as React from 'react';
+import clsx from 'clsx';
+import { ReactNode, useEffect, useState } from 'react';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  // Put Header or Footer Here
-  return <>{children}</>;
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
+
+import { colorList } from '@/constant/themeColor';
+import { useThemeContext } from '@/context/theme';
+
+export default function Layout({ children }: { children: ReactNode }) {
+  const { color, setColor, theme } = useThemeContext();
+  const [tempColor, setTempColor] = useState<typeof colorList[number]>(
+    colorList[0]
+  );
+  // auto changing colors
+  useEffect(() => {
+    if (!color) {
+      const intervalId = setInterval(() => {
+        const ind = colorList.findIndex((col) => col === tempColor);
+        const nextInd = ind === colorList.length - 1 ? 0 : ind + 1;
+        setTempColor(colorList[nextInd]);
+      }, 3000);
+      return () => clearInterval(intervalId);
+    }
+  }, [setColor, tempColor, color]);
+
+  return (
+    <div className={`${clsx(!color && tempColor, color, theme)}`}>
+      <div className='layoutGrid bg-bg-primary'>
+        <Header />
+        {children}
+        <Footer />
+      </div>
+    </div>
+  );
 }

@@ -4,6 +4,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -23,7 +24,8 @@ module.exports = {
           800: 'rgb(var(--tw-color-primary-800) / <alpha-value>)',
           900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
         },
-        dark: '#222222',
+        'text-primary': 'rgb(var(--tw-text-primary) / <alpha-value>)',
+        'bg-primary': 'rgb(var(--tw-bg-primary) / <alpha-value>)',
       },
       keyframes: {
         flicker: {
