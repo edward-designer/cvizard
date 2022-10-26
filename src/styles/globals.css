@@ -27,7 +27,7 @@
   /* #endregion  /**======== Primary Color =========== */
   --tw-text-primary: 20 20 20;
   --text-primary: rgb(var(--tw-text-primary));
-  --tw-bg-primary: 230 230 230;
+  --tw-bg-primary: 255 255 255;
   --bg-primary: rgb(var(--tw-bg-primary));
 }
 :root .dark {
@@ -41,7 +41,6 @@
     font-style: normal;
     font-weight: 100 900;
     font-display: optional;
-    src: url('/fonts/inter-var-latin.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
       U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
       U+2215, U+FEFF, U+FFFD;
@@ -78,10 +77,16 @@
 
   body,
   .p {
-    @apply font-primary text-sm md:text-base;
+    @apply font-primary text-sm;
   }
   /* #endregion  /**======== Typography =========== */
 
+  svg * {
+    transform-box: fill-box;
+  }
+  strong {
+    @apply font-primary font-bold;
+  }
   .layout {
     /* 1100px */
     max-width: 68.75rem;
@@ -118,6 +123,16 @@
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
   }
+  .animation-delay-75 {
+    animation-delay: 75ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     .animated-underline {
       transition: 0.3s ease;

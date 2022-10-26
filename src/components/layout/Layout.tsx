@@ -25,12 +25,14 @@ export default function Layout({ children }: { children: ReactNode }) {
   }, [setColor, tempColor, color]);
 
   return (
-    <div className={`${clsx(!color && tempColor, color, theme)}`}>
+    <div
+      className={`${clsx(!color && tempColor, color, theme)} text-text-primary`}
+    >
       <div className='layoutGrid bg-bg-primary'>
         <Header />
         {children}
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

@@ -21,11 +21,14 @@
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.11",
+    "@next/font": "^13.0.0",
     "clsx": "^1.2.1",
-    "next": "^12.3.1",
+    "eslint-config-next": "^13.0.0",
+    "next": "^13.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "react-spring": "^9.5.5",
     "tailwind-merge": "^1.6.1"
   },
   "devDependencies": {
@@ -40,7 +43,6 @@
     "@typescript-eslint/parser": "^5.38.1",
     "autoprefixer": "^10.4.12",
     "eslint": "^8.24.0",
-    "eslint-config-next": "^12.3.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",

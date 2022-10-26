@@ -47,10 +47,26 @@ module.exports = {
             backgroundPosition: '700px 0',
           },
         },
+        tick: {
+          '0%': {
+            opacity: 0,
+            transform: 'scale(4)',
+          },
+          '20%': {
+            opacity: 1,
+            transform: 'scale(1)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'scale(1)',
+          },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
+        gear: 'spin 4s linear infinite',
+        tick: 'tick 5s linear forwards',
       },
     },
   },
