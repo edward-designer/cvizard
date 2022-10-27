@@ -2,12 +2,14 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import localFont from '@next/font/local';
 import Link from 'next/link';
 import type { ReactElement } from 'react';
-import React from 'react';
+import { useRef } from 'react';
 
 import BlockWithImage from '@/components/common/BlockWithImage';
 import Layout from '@/components/layout/Layout';
 import LayoutEditor from '@/components/layout/LayoutEditor';
 import Seo from '@/components/Seo';
+
+import useIntersectionObserver from '@/hook/useIntersectionObserver';
 
 import type { NextPageWithLayout } from './_app';
 
@@ -22,15 +24,18 @@ const myFont = localFont({
 });
 
 const HomePage: NextPageWithLayout = () => {
+  const observerRef = useRef<HTMLElement | null>(null);
+  useIntersectionObserver(observerRef);
+
   return (
     <Layout>
       <Seo />
-      <main className={`${myFont.className} col-span-3`}>
+      <main className={`${myFont.className} col-span-3`} ref={observerRef}>
         <section className='layoutGrid bg-primary-600/10'>
           <div className='col-start-2 flex flex-col items-center gap-2 py-4 pb-10 sm:flex-row sm:gap-8 sm:pb-4'>
-            <div className='h-[385px] w-[453px] max-w-[80%] md:flex-1'>
+            <div className='h-[235px] w-[453px] max-w-[80%] md:h-[335px] md:flex-1'>
               <FeatureImg
-                className='h-full w-full text-primary-700 dark:text-primary-900 
+                className='h-full w-full animate-slideInLeft text-primary-700 dark:text-primary-900 
               [&_.feature\_svg\_\_gear]:animate-gear [&_.feature\_svg\_\_placeholder]:animate-pulse [&_.feature\_svg\_\_profileImg]:animate-ping
               [&_*]:origin-center [&_.feature\_svg\_\_tick]:animate-tick'
               />
@@ -79,14 +84,14 @@ const HomePage: NextPageWithLayout = () => {
                 still continue to work on your CVs and cover letters!
               </p>
             </div>
-            <div className='h-[385px] w-[453px] max-w-[80%] md:flex-1'>
+            <div className='h-[335px] w-[453px] max-w-[80%] md:flex-1'>
               <StepsImg className='h-full w-full text-primary-200 dark:text-primary-800' />
             </div>
           </BlockWithImage>
 
           <BlockWithImage>
-            <div className='h-[350px] w-[453px] max-w-[80%] md:flex-1'>
-              <KeywordImg className='h-full w-full text-primary-200 dark:text-primary-800' />
+            <div className='h-[300px] w-[453px] max-w-[80%] md:flex-1'>
+              <KeywordImg className='h-full w-full text-primary-200 opacity-0 dark:text-primary-800' />
             </div>
             <div className='md:flex-1'>
               <h2>
@@ -114,12 +119,12 @@ const HomePage: NextPageWithLayout = () => {
                 cover letters with the same design and color as your CVs.
               </p>
             </div>
-            <div className='h-[280px] w-[453px] max-w-[80%] md:flex-1'>
+            <div className='h-[250px] w-[453px] max-w-[80%] md:flex-1'>
               <CoverLetterImg className='h-full w-full text-primary-300 dark:text-primary-800' />
             </div>
           </BlockWithImage>
         </section>
-        <section className='layoutGrid bg-primary-700 p-10 pb-20'>
+        <section className='layoutGrid mt-10 bg-primary-700 p-10 pb-20'>
           <div className='col-start-2 text-center text-white dark:text-slate-300'>
             <div className='mb-2 flex justify-center'>
               <ChemleonImg className='h-[46px] w-[122px] text-primary-400 dark:text-primary-800 [&_.chemleon\_svg\_\_face]:fill-primary-600 [&_.chemleon\_svg\_\_body]:fill-primary-300 dark:[&_.chemleon\_svg\_\_body]:fill-primary-600 [&_.chemleon\_svg\_\_hat]:fill-primary-900' />

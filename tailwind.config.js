@@ -61,12 +61,34 @@ module.exports = {
             transform: 'scale(1)',
           },
         },
+        slideInLeft: {
+          '0%': {
+            opacity: 0,
+            transform: 'translateX(-2em)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'translateX(0)',
+          },
+        },
+        slideOutRight: {
+          '0%': {
+            opacity: 1,
+            transform: 'translateX(0)',
+          },
+          '100%': {
+            opacity: 0,
+            transform: 'translateX(2em)',
+          },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
         gear: 'spin 4s linear infinite',
         tick: 'tick 5s linear forwards',
+        slideInLeft: 'slideInLeft 0.5s ease-in normal forwards',
+        slideOutRight: 'slideOutRight 0.5s ease-in normal forwards',
       },
     },
   },

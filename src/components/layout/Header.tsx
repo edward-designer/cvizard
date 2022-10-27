@@ -12,7 +12,7 @@ export default function Header() {
           <Link href='/'>
             <Logo
               aria-label='Website logo'
-              className='h-[100px] w-[168px] fill-primary-700 text-primary-700 transition-colors duration-1000'
+              className='h-[75px] w-[126px] fill-primary-700 text-primary-700 transition-colors duration-1000 md:h-[100px] md:w-[168px]'
             />
           </Link>
           <Link href='/components'>

@@ -21,10 +21,10 @@ const Footer = () => {
     >
       {showPreference ? (
         <div className='bg-primary-300 p-2'>
-          <p className='mb-2 text-center text-slate-900'>
+          <p className='my-2 text-center text-slate-900'>
             Pick your favourite color
           </p>
-          <div className='mx-10 flex flex-wrap justify-center gap-2'>
+          <div className='flex flex-wrap justify-center gap-2 md:mx-10'>
             {colorList.map((c) => (
               <Button
                 key={c}
