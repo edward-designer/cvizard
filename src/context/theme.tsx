@@ -1,7 +1,7 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useContext } from 'react';
 
 import { colorList } from '@/constant/themeColor';
-
+import useStateStorage from '@/hook/useStateStorage';
 export enum ITheme {
   light = 'light',
   dark = 'dark',
@@ -28,8 +28,11 @@ const defaultState = {
 const ThemeContext = createContext<IThemeContext>(defaultState);
 
 export const ThemeWrapper = ({ children }: { children: ReactNode }) => {
-  const [color, setColor] = useState<typeof colorList[number] | null>(null);
-  const [theme, setTheme] = useState<ITheme>(ITheme.light);
+  const [color, setColor] = useStateStorage<typeof colorList[number] | null>(
+    'color',
+    null
+  );
+  const [theme, setTheme] = useStateStorage<ITheme>('theme', ITheme.light);
   return (
     <ThemeContext.Provider value={{ color, setColor, theme, setTheme }}>
       {children}

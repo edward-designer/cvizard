@@ -45,6 +45,13 @@
       U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
       U+2215, U+FEFF, U+FFFD;
   }
+  @font-face {
+    font-family: 'Antonio';
+    font-style: normal;
+    font-weight: 700;
+    font-display: block;
+    src: url('/fonts/Antonio-VariableFont_wght.ttf');
+  }
 
   .cursor-newtab {
     cursor: url('/images/new-tab.png') 10 10, pointer;
@@ -106,7 +113,7 @@
     display: grid;
     grid-template-columns:
       [full-start] minmax(1em, 1fr)
-      [main-start] minmax(0, 60em) [main-end]
+      [main-start] minmax(0, 100em) [main-end]
       minmax(1em, 1fr) [full-end];
   }
 }

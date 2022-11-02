@@ -1,12 +1,10 @@
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import localFont from '@next/font/local';
-import Link from 'next/link';
-import type { ReactElement } from 'react';
 import { useRef } from 'react';
 
 import BlockWithImage from '@/components/common/BlockWithImage';
 import Layout from '@/components/layout/Layout';
-import LayoutEditor from '@/components/layout/LayoutEditor';
+import ArrowLink from '@/components/links/ArrowLink';
+import ButtonLink from '@/components/links/ButtonLink';
 import Seo from '@/components/Seo';
 
 import useIntersectionObserver from '@/hook/useIntersectionObserver';
@@ -28,7 +26,7 @@ const HomePage: NextPageWithLayout = () => {
   useIntersectionObserver(observerRef);
 
   return (
-    <Layout>
+    <Layout bgText=''>
       <Seo />
       <main className={`${myFont.className} col-span-3`} ref={observerRef}>
         <section className='layoutGrid bg-primary-600/10'>
@@ -36,8 +34,8 @@ const HomePage: NextPageWithLayout = () => {
             <div className='h-[235px] w-[453px] max-w-[80%] md:h-[335px] md:flex-1'>
               <FeatureImg
                 className='h-full w-full animate-slideInLeft text-primary-700 dark:text-primary-900 
-              [&_.feature\_svg\_\_gear]:animate-gear [&_.feature\_svg\_\_placeholder]:animate-pulse [&_.feature\_svg\_\_profileImg]:animate-ping
-              [&_*]:origin-center [&_.feature\_svg\_\_tick]:animate-tick'
+              [&_*]:origin-center [&_.feature\_svg\_\_gear]:animate-gear [&_.feature\_svg\_\_placeholder]:animate-pulse
+              [&_.feature\_svg\_\_profileImg]:animate-ping [&_.feature\_svg\_\_tick]:animate-tick'
               />
             </div>
             <div className='md:flex-1'>
@@ -135,11 +133,14 @@ const HomePage: NextPageWithLayout = () => {
               creating the best CV and cover letter for your perfect job, with a
               little bit of magic : )
             </p>
-            <Link href='/components'>
-              <button className='flex-0 rounded-md bg-primary-300 px-4 py-2 text-sm text-primary-900 hover:bg-primary-400'>
-                Try CVizard NOW <ArrowForwardIcon className='-mt-1' />
-              </button>
-            </Link>
+            <ArrowLink
+              as={ButtonLink}
+              direction='right'
+              className='mt-2'
+              href='/dashboard'
+            >
+              Try CVizard NOW
+            </ArrowLink>
           </div>
         </section>
       </main>
@@ -148,10 +149,6 @@ const HomePage: NextPageWithLayout = () => {
       </div>
     </Layout>
   );
-};
-
-HomePage.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutEditor>{page}</LayoutEditor>;
 };
 
 export default HomePage;

@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         primary: ['Inter', ...fontFamily.sans],
+        antonio: ['Antonio', ...fontFamily.sans],
       },
       colors: {
         primary: {
@@ -74,11 +75,11 @@ module.exports = {
         slideOutRight: {
           '0%': {
             opacity: 1,
-            transform: 'translateX(0)',
+            transform: 'translateY(0)',
           },
           '100%': {
             opacity: 0,
-            transform: 'translateX(2em)',
+            transform: 'translateY(-2em)',
           },
         },
       },

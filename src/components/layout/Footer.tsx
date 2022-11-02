@@ -20,7 +20,7 @@ const Footer = () => {
       }`}
     >
       {showPreference ? (
-        <div className='bg-primary-300 p-2'>
+        <div className='bg-primary-300/80 p-2'>
           <p className='my-2 text-center text-slate-900'>
             Pick your favourite color
           </p>
