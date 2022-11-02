@@ -4,7 +4,7 @@ const JobNew = () => {
   return (
     <Link
       href='/'
-      className='flex flex-col place-content-center items-center bg-slate-500/10 p-4 text-slate-500 hover:scale-[1.05] hover:bg-primary-500/10 hover:text-primary-900 hover:shadow-lg'
+      className='flex flex-col place-content-center items-center bg-slate-500/10 p-4 text-slate-500 transition-all hover:scale-[1.05] hover:bg-primary-500/10 hover:text-primary-900 hover:shadow-lg'
     >
       <svg
         viewBox='0 0 200 200'

@@ -3,4 +3,6 @@ export interface IJob {
   date: string;
   title: string;
   company: string;
+  scoreCV?: number;
+  scoreCover?: number;
 }

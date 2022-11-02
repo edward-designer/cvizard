@@ -1,11 +1,21 @@
 import React from 'react';
 
-const ScoreCircle = ({ score, name }: { score: number; name: string }) => {
+const ScoreCircle = ({
+  score,
+  name,
+}: {
+  score: number | undefined;
+  name: string;
+}) => {
   return (
     <svg
-      className='[&_tspan]:fill-slate-500 [&_tspan]:text-[3px] [&_tspan]:tracking-tighter [&_#percentage]:fill-primary-900 [&_#percentage]:text-[14px] 
+      className={`${
+        score
+          ? '[&_#percentage]:fill-primary-900'
+          : 'text-transparent [&_#percentage]:fill-slate-300 [&_#percentage]:dark:fill-slate-600'
+      } [&_tspan]:fill-slate-500 [&_tspan]:text-[3px] [&_tspan]:tracking-tighter [&_#percentage]:text-[14px] 
       [&_#percentage]:font-light [&_#percentage]:tracking-tighter [&_*]:transition-all [&_*]:duration-1000
-      [&_#circle-base]:stroke-slate-300 [&_#circle-base]:dark:stroke-slate-900'
+      [&_#circle-base]:stroke-slate-300 [&_#circle-base]:dark:stroke-slate-900`}
       viewBox='0 0 36 36'
     >
       <defs>
@@ -34,7 +44,7 @@ const ScoreCircle = ({ score, name }: { score: number; name: string }) => {
       >
         <animate
           attributeName='stroke-dasharray'
-          values={`${score} 100`}
+          values={`${Number.isInteger(score) ? score : 0} 100`}
           dur='3s'
           fill='freeze'
         />
@@ -44,7 +54,7 @@ const ScoreCircle = ({ score, name }: { score: number; name: string }) => {
           {name}
         </tspan>
         <tspan id='percentage' x='18' dy='0.9em'>
-          {score}
+          {Number.isInteger(score) ? score : '--'}
         </tspan>
         <tspan id='percentageMark'>%</tspan>
       </text>

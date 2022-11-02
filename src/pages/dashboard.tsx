@@ -1,6 +1,4 @@
-import fs from 'fs';
-import matter from 'gray-matter';
-import path from 'path';
+import { readMetaFromDir } from '@/lib/reader';
 
 import JobNew from '@/components/dashboard/JobNew';
 import JobSummaryCard from '@/components/dashboard/JobSummaryCard';
@@ -8,8 +6,6 @@ import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
 import { IJob } from '@/types/types';
-
-const postsDirectory = path.join(process.cwd(), 'src/cv');
 
 export default function dashboard({ jobs }: { jobs: IJob[] }) {
   return (
@@ -29,20 +25,6 @@ export default function dashboard({ jobs }: { jobs: IJob[] }) {
 }
 
 dashboard.getInitialProps = () => {
-  const fileNames = fs.readdirSync(postsDirectory);
-
-  const jobs = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, '');
-
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-    const matterResult = matter(fileContents);
-
-    return {
-      id,
-      ...matterResult.data,
-    };
-  }) as IJob[];
+  const jobs = readMetaFromDir();
   return { jobs };
 };
