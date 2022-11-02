@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 interface IInputField {
   name: string;
@@ -13,6 +13,8 @@ const InputField = ({
   type = 'text',
   value = '',
 }: IInputField) => {
+  const [val, setVal] = useState(value);
+
   return (
     <div className='mb-6'>
       <label htmlFor={name} className='text-sm font-semibold text-text-primary'>
@@ -21,8 +23,11 @@ const InputField = ({
       <input
         id={name}
         className='mt-2 block w-full rounded-md border p-2'
-        value={value}
+        value={val}
         type={type}
+        onChange={(e) => {
+          setVal(e.target.value);
+        }}
       />
     </div>
   );
