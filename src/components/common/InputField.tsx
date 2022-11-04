@@ -17,12 +17,16 @@ const InputField = ({
 
   return (
     <div className='mb-6'>
-      <label htmlFor={name} className='text-sm font-semibold text-text-primary'>
+      <label
+        htmlFor={name}
+        className='text-sm font-semibold text-text-primary dark:text-slate-500'
+      >
         {title}
       </label>
       <input
         id={name}
-        className='mt-2 block w-full rounded-md border p-2'
+        name={name}
+        className='mt-2 block w-full rounded-md border p-2 dark:bg-bg-primary dark:[color-scheme:dark]'
         value={val}
         type={type}
         onChange={(e) => {

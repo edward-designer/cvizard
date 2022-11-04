@@ -86,6 +86,14 @@
   .p {
     @apply font-primary text-sm;
   }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
   /* #endregion  /**======== Typography =========== */
 
   svg * {
@@ -113,8 +121,23 @@
     display: grid;
     grid-template-columns:
       [full-start] minmax(1em, 1fr)
-      [main-start] minmax(0, 100em) [main-end]
+      [main-start] minmax(0, 80em) [main-end]
       minmax(1em, 1fr) [full-end];
+  }
+
+  /* md editor */
+  #description_md,
+  #description_html {
+    @apply bg-bg-primary text-text-primary;
+  }
+  #description_html > div {
+    @apply text-text-primary;
+  }
+  #description > div {
+    @apply dark:bg-bg-primary dark:text-text-primary;
+  }
+  #description > div span {
+    @apply dark:hover:text-primary-500;
   }
 }
 

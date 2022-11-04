@@ -144,9 +144,6 @@ const HomePage: NextPageWithLayout = () => {
           </div>
         </section>
       </main>
-      <div className='col-span-3 bg-gray-900 p-4 text-center text-white'>
-        ©2022 CVizard Limited
-      </div>
     </Layout>
   );
 };

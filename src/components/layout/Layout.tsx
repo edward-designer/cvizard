@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { ReactNode, useEffect, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
@@ -41,6 +42,7 @@ export default function Layout({
     <div
       className={`${clsx(!color && tempColor, color, theme)} text-text-primary`}
     >
+      <ToastContainer theme={theme} />
       <div className='layoutGrid bg-bg-primary'>
         <div
           className={`${
@@ -51,6 +53,9 @@ export default function Layout({
         </div>
         <Header />
         {children}
+        <div className='col-span-3 bg-gray-900 p-4 text-center text-white'>
+          ©2022 CVizard Limited
+        </div>
       </div>
       <Footer />
     </div>
