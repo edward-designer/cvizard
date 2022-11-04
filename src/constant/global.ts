@@ -1,3 +1,7 @@
 import path from 'path';
 
-export const postsDirectory = path.join(process.cwd(), 'src/cv');
+import { isLocal } from '@/constant/env';
+
+export const postsDirectory = isLocal
+  ? path.join(process.cwd(), 'src/cv')
+  : '/tmp';
