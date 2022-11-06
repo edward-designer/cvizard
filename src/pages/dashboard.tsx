@@ -1,11 +1,11 @@
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-
-import 'react-toastify/dist/ReactToastify.css';
 
 import { deleteFile } from '@/lib/fileHandling';
 import { readMetaFromDir } from '@/lib/reader';
 
+import AnimatedListChange from '@/components/common/AnimatedListChange';
 import Search from '@/components/common/Search';
 import JobNew from '@/components/dashboard/JobNew';
 import JobSummaryCard from '@/components/dashboard/JobSummaryCard';
@@ -34,6 +34,12 @@ export default function Dashboard({
     return jobs.filter((job) => regex.test(`${job.jobTitle} ${job.employer}`));
   };
 
+  const router = useRouter();
+  const clickHandler = () => {
+    const href = `/job/${Date.now()}/job`;
+    router.push(href);
+  };
+
   return (
     <Layout bgText='HELLO'>
       <Seo />
@@ -45,14 +51,20 @@ export default function Dashboard({
           <Search search={search} setSearch={setSearch} />
         </div>
         <div className='mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
-          <JobNew />
-          {filteredJob().map((job) => (
-            <JobSummaryCard
-              clickHandler={deleteHandler}
-              job={job}
-              key={job.id}
-            />
-          ))}
+          <JobNew
+            clickHandler={clickHandler}
+            label='New Job'
+            aria='create a new job application stack'
+          />
+          <AnimatedListChange classToAdd='animate-fadeOut'>
+            {filteredJob().map((job) => (
+              <JobSummaryCard
+                clickHandler={deleteHandler}
+                job={job}
+                key={job.id}
+              />
+            ))}
+          </AnimatedListChange>
         </div>
       </main>
     </Layout>
@@ -60,6 +72,6 @@ export default function Dashboard({
 }
 
 export async function getServerSideProps() {
-  const jobsFromServer = readMetaFromDir();
+  const jobsFromServer = await readMetaFromDir();
   return { props: { jobsFromServer } };
 }

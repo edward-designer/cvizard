@@ -137,7 +137,7 @@ describe('filterKeywordList()', () => {
 describe('extractKeywordsFromString()', () => {
   it('return the full list of array of keywords', () => {
     const text =
-      "At least 5 years of web development experience! +4 in senior position web-development don't.";
+      "At least 5 years of web development experience! +4 in - 'senior position' web-development don't.";
     const result = extractKeywordsFromString(text);
     expect(result).toEqual([
       'at',

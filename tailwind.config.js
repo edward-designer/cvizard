@@ -82,6 +82,19 @@ module.exports = {
             transform: 'translateY(-2em)',
           },
         },
+        fadeOut: {
+          '0%': {
+            opacity: 1,
+          },
+          '100%': {
+            opacity: 0,
+          },
+        },
+        circleZeroToScore: {
+          '0%': {
+            strokeDasharray: '0 100',
+          },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
@@ -90,6 +103,9 @@ module.exports = {
         tick: 'tick 5s linear forwards',
         slideInLeft: 'slideInLeft 0.5s ease-in normal forwards',
         slideOutRight: 'slideOutRight 0.5s ease-in normal forwards',
+        fadeOut: 'fadeOut 1s ease-in-out forwards',
+        fadeOutReversed: 'fadeOut 1s ease-in-out reverse forwards',
+        circleZeroToScore: 'circleZeroToScore 1s ease-in-out',
       },
     },
   },

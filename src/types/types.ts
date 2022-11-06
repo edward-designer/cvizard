@@ -8,3 +8,8 @@ export interface IJob {
   scoreCover?: number;
   description?: string;
 }
+
+export interface ICV {
+  id: string;
+  content: string;
+}

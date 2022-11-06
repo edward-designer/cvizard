@@ -11,19 +11,25 @@ import { IJob } from '@/types/types';
 const JobSummaryCard = ({
   job,
   clickHandler,
+  className,
 }: {
   job: IJob;
-  clickHandler: (id: string) => () => void;
+  clickHandler?: (id: string) => () => void;
+  className?: string;
 }) => {
   return (
-    <div className='group relative flex flex-col bg-primary-400/10 p-2 text-primary-900 hover:bg-primary-200/50 dark:hover:bg-primary-800/40 md:p-4 [&_div]:leading-4'>
-      <button
-        className='invisible absolute right-2 text-primary-800/50 group-hover:visible'
-        aria-label='delete this job application stack'
-        onClick={clickHandler(job.id)}
-      >
-        <CloseIcon />
-      </button>
+    <div
+      className={`${className} group relative flex flex-col bg-primary-400/10 p-2 text-primary-900 hover:bg-primary-200/50 dark:hover:bg-primary-800/40 md:p-4 [&_div]:leading-4`}
+    >
+      {clickHandler && (
+        <button
+          className='invisible absolute right-2 text-primary-800/50 group-hover:visible'
+          aria-label='delete this job application stack'
+          onClick={clickHandler(job.id)}
+        >
+          <CloseIcon />
+        </button>
+      )}
       <div className='flex-1'>
         <div className='text-[0.75em] text-text-primary'>{job.date}</div>
         <h2 className='my-1 text-lg font-bold leading-4'>{job.jobTitle}</h2>
@@ -35,7 +41,7 @@ const JobSummaryCard = ({
       </div>
       <div className='invisible mt-4 flex justify-center gap-2 text-xs group-hover:visible '>
         <ButtonLink
-          href={`/job/${job.id}`}
+          href={`/job/${job.id}/job`}
           variant='ghost'
           className='block flex-1 text-center text-text-primary'
           aria-label={`edit the job application stack for ${job.jobTitle} at ${job.employer}`}

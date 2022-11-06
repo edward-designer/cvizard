@@ -1,15 +1,15 @@
-import { useRouter } from 'next/router';
-
-const JobNew = () => {
-  const router = useRouter();
-  const clickHandler = () => {
-    const path = `/job/${Date.now()}`;
-    router.push(path);
-  };
-
+const JobNew = ({
+  label,
+  aria,
+  clickHandler,
+}: {
+  label: string;
+  aria: string;
+  clickHandler: () => void;
+}) => {
   return (
     <div
-      aria-label='create a new job application stack'
+      aria-label={aria}
       tabIndex={0}
       className='flex cursor-pointer flex-col place-content-center items-center bg-slate-500/10 p-14 text-slate-500 transition-all 
       hover:scale-[1.05] hover:bg-primary-500/10 hover:text-primary-900 hover:shadow-lg
@@ -37,7 +37,7 @@ const JobNew = () => {
         />
       </svg>
 
-      <div className='mt-4'>New Job</div>
+      <div className='mt-4'>{label}</div>
     </div>
   );
 };

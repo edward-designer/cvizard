@@ -51,8 +51,8 @@ export function extractTextFromHTML(html: string): string {
 export function extractKeywordsFromString(text: string): string[] {
   const keywordArray = text
     .toLocaleLowerCase()
-    .replace(/[^a-zA-Z0-9'-]+/g, ' ')
-    .replace(/\s+/g, ' ')
+    .replaceAll(/[^a-zA-Z0-9'-]+/g, ' ')
+    .replaceAll(/[\s'-]{2,}/g, ' ')
     .split(' ')
     .filter(Boolean);
   return Array.from(new Set(keywordArray));
@@ -65,11 +65,22 @@ export function getFilteredKeywordList(
   return keywords.filter((keyword) => !wordsToRemove.includes(keyword));
 }
 
+export function getFilteredKeywordListFromString(text: string): string[] {
+  return getFilteredKeywordList(extractKeywordsFromString(text));
+}
+
 export function getMatchedKeywordList(
-  keywords: string[],
-  keywordsToMatch: string[]
+  keywordsInCV: string[],
+  keywordsInAd: string[]
 ): string[] {
-  return keywords.filter((keyword) => keywordsToMatch.includes(keyword));
+  return keywordsInCV.filter((keyword) => keywordsInAd.includes(keyword));
+}
+
+export function getNotMatchedKeywordList(
+  keywordsInCV: string[],
+  keywordsInAd: string[]
+): string[] {
+  return keywordsInAd.filter((keyword) => !keywordsInCV.includes(keyword));
 }
 
 export function hightlightKeywords(
@@ -95,8 +106,17 @@ export function getKeywordScore(
   return Math.round((matchedKeywords.length / keywordsToMatch.length) * 100);
 }
 
-/* simple pipe function */
-type TFunc<T> = (x: T) => T;
-export function pipe<T extends TFunc<K>, K>(...fns: Array<T>): (x: K) => K {
-  return (x) => fns.reduce((v, f) => f(v), x);
+export function getKeywordScoreFromRawContents(
+  cvText: string,
+  adText: string
+): number {
+  const keywordsToMatch = getFilteredKeywordList(
+    extractKeywordsFromString(adText)
+  );
+  const matchedKeywords = getMatchedKeywordList(
+    extractKeywordsFromString(cvText),
+    keywordsToMatch
+  );
+
+  return Math.round((matchedKeywords.length / keywordsToMatch.length) * 100);
 }

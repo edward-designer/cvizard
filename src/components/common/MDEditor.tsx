@@ -11,12 +11,23 @@ interface IMDEditor {
   name: string;
   title: string;
   value?: string;
+  preview?: boolean;
+  changeHandler?: (text: string) => void;
 }
 
-const MDEditor = ({ name, title, value = '' }: IMDEditor) => {
+const MDEditor = ({
+  name,
+  title,
+  value = '',
+  preview = false,
+  changeHandler,
+}: IMDEditor) => {
   const [val, setVal] = useState(value);
 
   const handleEditorChange = ({ text }: { text: string }) => {
+    if (changeHandler) {
+      changeHandler(text);
+    }
     setVal(text);
   };
 
@@ -34,7 +45,7 @@ const MDEditor = ({ name, title, value = '' }: IMDEditor) => {
         id={name}
         name={name}
         style={{
-          height: '500px',
+          aspectRatio: 210 / 297,
           border: '1px solid #333',
           borderRadius: '5px',
           marginTop: '0.5em',
@@ -48,7 +59,7 @@ const MDEditor = ({ name, title, value = '' }: IMDEditor) => {
         canView={{
           menu: true,
           md: true,
-          html: false,
+          html: preview,
           both: false,
           fullScreen: false,
           hideMenu: false,
