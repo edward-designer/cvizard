@@ -106,17 +106,14 @@ export function getKeywordScore(
   return Math.round((matchedKeywords.length / keywordsToMatch.length) * 100);
 }
 
-export function getKeywordScoreFromRawContents(
-  cvText: string,
-  adText: string
-): number {
-  const keywordsToMatch = getFilteredKeywordList(
-    extractKeywordsFromString(adText)
-  );
-  const matchedKeywords = getMatchedKeywordList(
-    extractKeywordsFromString(cvText),
+export function getKeywordStat(content: string, textToMatch: string) {
+  const keywords = extractKeywordsFromString(content);
+  const keywordsToMatch = getFilteredKeywordListFromString(textToMatch);
+  const matchedKeywords = getMatchedKeywordList(keywords, keywordsToMatch);
+  const notMatchedKeywords = getNotMatchedKeywordList(
+    keywords,
     keywordsToMatch
   );
-
-  return Math.round((matchedKeywords.length / keywordsToMatch.length) * 100);
+  const score = getKeywordScore(matchedKeywords, keywordsToMatch);
+  return { matchedKeywords, notMatchedKeywords, score };
 }

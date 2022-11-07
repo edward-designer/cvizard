@@ -1,6 +1,7 @@
 import CloseIcon from '@mui/icons-material/Close';
 import DownloadIcon from '@mui/icons-material/Download';
 import EditIcon from '@mui/icons-material/Edit';
+import Link from 'next/link';
 import React from 'react';
 
 import ScoreCircle from '@/components/common/ScoreCircle';
@@ -36,8 +37,18 @@ const JobSummaryCard = ({
         <div className='text-text-primary'>@ {job.employer}</div>
       </div>
       <div className='my-4 flex gap-0 md:gap-2 '>
-        <ScoreCircle score={job.scoreCV} name='CV' />
-        <ScoreCircle score={job.scoreCover} name='Cover Letter' />
+        <Link
+          href={`/job/${job.id}/cv`}
+          className='hover-hue-rotate-15 flex-1 hover:brightness-110 hover:drop-shadow'
+        >
+          <ScoreCircle score={job.scoreCV} name='CV' />
+        </Link>
+        <Link
+          href={`/job/${job.id}/coverLetter`}
+          className='flex-1 hover:brightness-110 hover:drop-shadow hover:-hue-rotate-15'
+        >
+          <ScoreCircle score={job.scoreCover} name='Cover Letter' />
+        </Link>
       </div>
       <div className='invisible mt-4 flex justify-center gap-2 text-xs group-hover:visible '>
         <ButtonLink

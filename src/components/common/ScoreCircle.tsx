@@ -13,9 +13,9 @@ const ScoreCircle = ({
         Number.isInteger(score)
           ? '[&_#percentage]:fill-primary-900'
           : 'text-transparent [&_#percentage]:fill-slate-300 [&_#percentage]:dark:fill-slate-600'
-      } max-w-[8em] [&_tspan]:fill-slate-500 [&_tspan]:text-[3px] [&_tspan]:tracking-tighter [&_#percentage]:text-[14px] 
-      [&_#percentage]:font-light [&_#percentage]:tracking-tighter [&_*]:transition-all [&_*]:duration-1000
-      [&_#circle-base]:stroke-slate-300 [&_#circle-base]:dark:stroke-gray-900 [&_#circle]:animate-circleZeroToScore`}
+      } max-w-[8em] [&_tspan]:fill-slate-500 [&_tspan]:text-[3px] [&_tspan]:tracking-tighter 
+      [&_#percentage]:text-[14px] [&_#percentage]:font-light [&_#percentage]:tracking-tighter [&_*]:transition-all
+      [&_*]:duration-1000 [&_#circle-base]:stroke-slate-300 [&_#circle-base]:dark:stroke-gray-900 [&_#circle]:animate-circleZeroToScore`}
       viewBox='0 0 36 36'
     >
       <defs>

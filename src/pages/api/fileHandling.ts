@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
 
 import { formatMDwithMeta } from '@/lib/fileHandling';
-import { getKeywordScoreFromRawContents } from '@/lib/helper';
+import { getKeywordStat } from '@/lib/helper';
 import { readFromJobMD } from '@/lib/reader';
 
 import { postsDirectory } from '@/constant/global';
@@ -38,7 +38,7 @@ export default async function save(req: NextApiRequest, res: NextApiResponse) {
 
           const jobData = await readFromJobMD(fileIdJob);
 
-          const score = getKeywordScoreFromRawContents(
+          const { score } = getKeywordStat(
             fileContents,
             jobData.description || ''
           );

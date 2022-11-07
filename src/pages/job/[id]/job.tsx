@@ -17,10 +17,12 @@ import { appSteps } from '@/constant/global';
 import { IJob } from '@/types/types';
 
 const Job = ({ jobDetails }: { jobDetails: IJob }) => {
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
   const id = `${jobDetails.id}-job.md`;
   const nextHref = `/job/${jobDetails.id}/cv`;
+
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -59,6 +61,7 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
       };
     }
   };
+
   return (
     <Layout bgText='&nbsp;1'>
       <Seo />
@@ -70,7 +73,7 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
               Tips: You can simply copy and paste from online job ads.
             </p>
           </div>
-          <StepIndicator currentStep={1} steps={appSteps} />
+          <StepIndicator currentStep={1} steps={appSteps} id={jobDetails.id} />
         </div>
         <div className='mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
           <form className='col-span-2 md:col-start-2' onSubmit={handleSubmit}>
