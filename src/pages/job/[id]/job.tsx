@@ -1,3 +1,4 @@
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useRouter } from 'next/router';
 import { SyntheticEvent, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -51,7 +52,6 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
         scoreCV,
         scoreCover,
       }).then(() => {
-        setIsLoading(false);
         toast.success('Successfully saved job details.');
         router.push(nextHref);
       });
@@ -73,7 +73,13 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
               Tips: You can simply copy and paste from online job ads.
             </p>
           </div>
-          <StepIndicator currentStep={1} steps={appSteps} id={jobDetails.id} />
+          <div className='md:w-[30em]'>
+            <StepIndicator
+              currentStep={1}
+              steps={appSteps}
+              id={jobDetails.id}
+            />
+          </div>
         </div>
         <div className='mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
           <form className='col-span-2 md:col-start-2' onSubmit={handleSubmit}>
@@ -98,10 +104,16 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
               name='description'
               title='Description'
               value={jobDetails.description}
+              showPreview={false}
             />
             <div className='col-span-2 text-right md:col-start-2'>
-              <Button variant='primary' type='submit' isLoading={isLoading}>
-                Save
+              <Button
+                variant='primary'
+                type='submit'
+                isLoading={isLoading}
+                className='[&_svg]:transition-all [&_svg]:hover:translate-x-1'
+              >
+                Save <ArrowForwardIcon />
               </Button>
             </div>
           </form>

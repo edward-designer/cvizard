@@ -29,10 +29,12 @@
   --text-primary: rgb(var(--tw-text-primary));
   --tw-bg-primary: 255 255 255;
   --bg-primary: rgb(var(--tw-bg-primary));
+  color-scheme: light;
 }
 :root .dark {
-  --tw-text-primary: 245 245 245;
+  --tw-text-primary: 225 225 225;
   --tw-bg-primary: 25 25 25;
+  color-scheme: dark;
 }
 @layer base {
   /* inter var - latin */
@@ -125,19 +127,36 @@
       minmax(1em, 1fr) [full-end];
   }
 
-  /* md editor */
-  #description_md,
-  #description_html {
-    @apply bg-bg-primary text-text-primary;
+  /* preview */
+  #preview {
+    width: 210mm;
+    aspect-ratio: 210/297;
+    padding: 20mm 15mm;
+    margin: 2em auto;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transform-origin: left top;
+    margin-bttom: 0;
   }
-  #description_html > div {
-    @apply text-text-primary;
+  @page {
+    size: A4;
+    margin: 0;
   }
-  #description > div {
-    @apply dark:bg-bg-primary dark:text-text-primary;
-  }
-  #description > div span {
-    @apply dark:hover:text-primary-500;
+  @media print {
+    html,
+    body {
+      width: 210mm;
+      height: 297mm;
+    }
+    #preview {
+      margin: 0;
+      border: initial;
+      width: initial;
+      min-height: initial;
+      box-shadow: initial;
+      background: initial;
+      page-break-after: always;
+    }
   }
 }
 

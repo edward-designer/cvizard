@@ -22,7 +22,7 @@ const Footer = () => {
       {showPreference ? (
         <div className='bg-primary-300/80 p-2'>
           <p className='my-2 text-center text-slate-900'>
-            Pick your favourite color
+            Pick your favourite colour
           </p>
           <div className='flex flex-wrap justify-center gap-2 md:mx-10'>
             {colorList.map((c) => (

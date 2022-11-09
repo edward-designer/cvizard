@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import ScoreCircle from '@/components/common/ScoreCircle';
+import StepIndicator from '@/components/common/StepIndicator';
 import ButtonLink from '@/components/links/ButtonLink';
 
 import { IJob } from '@/types/types';
@@ -36,25 +37,28 @@ const JobSummaryCard = ({
         <h2 className='my-1 text-lg font-bold leading-4'>{job.jobTitle}</h2>
         <div className='text-text-primary'>@ {job.employer}</div>
       </div>
-      <div className='my-4 flex gap-0 md:gap-2 '>
+      <div className='my-4 flex gap-0 dark:text-primary-700  md:gap-2'>
         <Link
           href={`/job/${job.id}/cv`}
-          className='hover-hue-rotate-15 flex-1 hover:brightness-110 hover:drop-shadow'
+          className='flex-1 hover:brightness-125 hover:drop-shadow hover:hue-rotate-15 hover:filter'
+          title={`keywords analysis for CV: score is ${job.scoreCover}`}
         >
           <ScoreCircle score={job.scoreCV} name='CV' />
         </Link>
         <Link
           href={`/job/${job.id}/coverLetter`}
-          className='flex-1 hover:brightness-110 hover:drop-shadow hover:-hue-rotate-15'
+          className='flex-1 hover:brightness-125 hover:drop-shadow hover:hue-rotate-15 hover:filter'
+          title={`keywords analysis for Cover Letter: score is ${job.scoreCover}`}
         >
           <ScoreCircle score={job.scoreCover} name='Cover Letter' />
         </Link>
       </div>
-      <div className='invisible mt-4 flex justify-center gap-2 text-xs group-hover:visible '>
+
+      <div className='mt-4 flex justify-center gap-2 text-xs '>
         <ButtonLink
           href={`/job/${job.id}/job`}
           variant='ghost'
-          className='block flex-1 text-center text-text-primary'
+          className='block flex-1 text-center text-text-primary opacity-0 transition-all focus:opacity-100 group-hover:opacity-100 [&_svg]:hover:scale-110'
           aria-label={`edit the job application stack for ${job.jobTitle} at ${job.employer}`}
         >
           <EditIcon className='text-primary-900' /> Edit
@@ -63,11 +67,23 @@ const JobSummaryCard = ({
         <ButtonLink
           href={`/job/${job.id}`}
           variant='ghost'
-          className='block flex-1 text-center text-text-primary'
+          className='block flex-1 text-center text-text-primary opacity-0 transition-all focus:opacity-100 group-hover:opacity-100 [&_svg]:hover:scale-110 '
           aria-label={`download the PDF files of the CV and Cover Letter for ${job.jobTitle} at ${job.employer}`}
         >
           <DownloadIcon className='text-primary-900' /> PDF
         </ButtonLink>
+      </div>
+      <div className='my-6'>
+        <StepIndicator
+          id='123'
+          currentStep={0}
+          steps={[
+            { text: 'Init', href: '/job/[id]/job' },
+            { text: 'Apply', href: '/job/[id]/cv' },
+            { text: 'Interview', href: '/job/[id]/coverLetter' },
+            { text: 'Offer', href: '/job/[id]/preview' },
+          ]}
+        />
       </div>
     </div>
   );

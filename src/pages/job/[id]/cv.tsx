@@ -56,7 +56,6 @@ const CV = ({
         id: fileId,
         content,
       }).then(() => {
-        setIsLoading(false);
         toast.success('Successfully saved CV.');
         router.push(nextHref);
       });
@@ -116,7 +115,9 @@ const CV = ({
                 : 'Tips: Select the one below with the hightest score to give you a head start.'}
             </p>
           </div>
-          <StepIndicator currentStep={2} steps={appSteps} id={id} />
+          <div className='md:w-[30em]'>
+            <StepIndicator currentStep={2} steps={appSteps} id={id} />
+          </div>
         </div>
         <div className='mt-10 mb-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
           {cv.id ? (
@@ -126,7 +127,7 @@ const CV = ({
                 notMatchedKeywords={notMatchedKeywords}
               />
               <ContentEditor
-                title={`My tailored CV for ${jobDetails.jobTitle} @ ${jobDetails.employer}`}
+                title={`CV for ${jobDetails.jobTitle} @ ${jobDetails.employer}`}
                 content={cv.content}
                 isLoading={isLoading}
                 handleSubmit={handleSubmit}
