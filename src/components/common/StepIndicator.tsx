@@ -8,8 +8,8 @@ const StepIndicator = ({
   clickHandler,
 }: {
   currentStep: number;
-  steps: { text: string; href: string }[];
-  id: string;
+  steps: { text: string; href?: string }[];
+  id?: string;
   clickHandler?: () => void | undefined;
 }) => {
   const extraProps = clickHandler
@@ -50,7 +50,7 @@ const StepIndicator = ({
                   : '-translate-x-[calc(50%-0.5rem)]'
               } `}
             >
-              {index < currentStep - 1 ? (
+              {index < currentStep - 1 && step.href && id ? (
                 <Link href={step.href.replace('[id]', id)}>{step.text}</Link>
               ) : index == currentStep - 1 ? (
                 <span className='font-bold'>{step.text}</span>

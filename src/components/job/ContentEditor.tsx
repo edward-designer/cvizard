@@ -35,6 +35,7 @@ const ContentEditor = ({
           title={title}
           value={content}
           changeHandler={changeHandler}
+          className='aspect-[210/297]'
         />
         <div className='col-span-2 flex flex-row-reverse gap-2 md:col-start-2'>
           <Button

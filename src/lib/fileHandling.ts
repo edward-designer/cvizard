@@ -39,8 +39,23 @@ export const deleteFile = async (id: string) => {
 };
 
 export const formatMDwithMeta = (data: IJob) => {
-  const { date, jobTitle, employer, url, scoreCV, scoreCover, description } =
-    data;
+  const {
+    date,
+    jobTitle,
+    employer,
+    url,
+    scoreCV,
+    scoreCover,
+    description,
+    init,
+    apply,
+    interview,
+    offer,
+    initNotes,
+    applyNotes,
+    interviewNotes,
+    offerNotes,
+  } = data;
 
   const fileContentsJob = `---
 date: '${date || ''}'
@@ -49,6 +64,14 @@ employer: '${employer || ''}'
 url: '${url || ''}'
 scoreCV: ${scoreCV}
 scoreCover: ${scoreCover}
+init: '${init || ''}'
+initNotes: '${initNotes || ''}'
+apply: '${apply || ''}'
+applyNotes: '${applyNotes || ''}'
+interview: '${interview || ''}'
+interviewNotes: '${interviewNotes || ''}'
+offer: '${offer || ''}'
+offerNotes: '${offerNotes || ''}'
 ---
 ${description || ''}`;
 

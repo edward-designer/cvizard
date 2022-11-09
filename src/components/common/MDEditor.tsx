@@ -10,6 +10,7 @@ interface IMDEditor {
   value?: string;
   showPreview?: boolean;
   changeHandler?: (text: string) => void;
+  className?: string;
 }
 
 const MDEditor = ({
@@ -18,6 +19,7 @@ const MDEditor = ({
   value = '',
   changeHandler,
   showPreview = true,
+  className = '',
 }: IMDEditor) => {
   const [val, setVal] = useState(value);
   const [preview, setPreview] = useState(false);
@@ -77,6 +79,13 @@ const MDEditor = ({
           <div className='mb-4 bg-primary-900/10 p-2 dark:bg-primary-900/50'>
             <MDPreviewer ref={editorRef} content={val} />
           </div>
+          <textarea
+            name={name}
+            className='hidden'
+            placeholder=''
+            value={val}
+            onChange={handleEditorChange}
+          />
         </>
       ) : (
         <>
@@ -91,7 +100,7 @@ const MDEditor = ({
           )}
           <textarea
             name={name}
-            className='mb-2 aspect-square w-full rounded-md border text-text-primary outline-none dark:bg-bg-primary'
+            className={`mb-2 w-full rounded-md border text-text-primary outline-none dark:bg-bg-primary ${className}`}
             placeholder='Write your markdown here'
             value={val}
             onChange={handleEditorChange}

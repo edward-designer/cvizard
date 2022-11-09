@@ -10,10 +10,11 @@ import Button from '@/components/buttons/Button';
 import InputField from '@/components/common/InputField';
 import MDEditor from '@/components/common/MDEditor';
 import StepIndicator from '@/components/common/StepIndicator';
+import FieldSet from '@/components/job/FieldSet';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
-import { appSteps } from '@/constant/global';
+import { appSteps, trackerSteps } from '@/constant/global';
 
 import { IJob } from '@/types/types';
 
@@ -33,6 +34,14 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
       date: { value: string };
       url: { value: string };
       description: { value: string };
+      init: { value: string };
+      initNotes: { value: string };
+      apply: { value: string };
+      applyNotes: { value: string };
+      interview: { value: string };
+      interviewNotes: { value: string };
+      offer: { value: string };
+      offerNotes: { value: string };
     };
     const jobTitle = target.jobTitle.value;
     const employer = target.employer.value;
@@ -41,6 +50,14 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
     const description = target.description.value;
     const scoreCV = jobDetails.scoreCV;
     const scoreCover = jobDetails.scoreCover;
+    const init = target.init.value;
+    const initNotes = target.initNotes.value;
+    const apply = target.apply.value;
+    const applyNotes = target.applyNotes.value;
+    const interview = target.interview.value;
+    const interviewNotes = target.interviewNotes.value;
+    const offer = target.offer.value;
+    const offerNotes = target.offerNotes.value;
     try {
       saveToFile({
         id,
@@ -51,6 +68,14 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
         description,
         scoreCV,
         scoreCover,
+        init,
+        initNotes,
+        apply,
+        applyNotes,
+        interview,
+        interviewNotes,
+        offer,
+        offerNotes,
       }).then(() => {
         toast.success('Successfully saved job details.');
         router.push(nextHref);
@@ -61,6 +86,7 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
       };
     }
   };
+  const today = new Date().toISOString().split('T')[0];
 
   return (
     <Layout bgText='&nbsp;1'>
@@ -83,6 +109,7 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
         </div>
         <div className='mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
           <form className='col-span-2 md:col-start-2' onSubmit={handleSubmit}>
+            <h3 className='mb-4 border-t'>Job Ad</h3>
             <InputField
               name='jobTitle'
               title='Job Title'
@@ -97,7 +124,7 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
               name='date'
               title='Date'
               type='date'
-              value={jobDetails.date}
+              value={jobDetails.date || today}
             />
             <InputField name='url' title='Job Ad URL' value={jobDetails.url} />
             <MDEditor
@@ -105,7 +132,12 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
               title='Description'
               value={jobDetails.description}
               showPreview={false}
+              className='aspect-square'
             />
+            <h3 className='mb-4 mt-6 border-t'>Job Application Tracker</h3>
+            {trackerSteps.map(({ text }) => (
+              <FieldSet key={text} name={text} jobDetails={jobDetails} />
+            ))}
             <div className='col-span-2 text-right md:col-start-2'>
               <Button
                 variant='primary'

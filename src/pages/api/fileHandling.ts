@@ -92,7 +92,7 @@ export default async function save(req: NextApiRequest, res: NextApiResponse) {
       const paths = [
         path.join(postsDirectory, `${id}-job.md`),
         path.join(postsDirectory, `${id}-cv.md`),
-        path.join(postsDirectory, `${id}-cover.md`),
+        path.join(postsDirectory, `${id}-coverLetter.md`),
       ];
       try {
         paths.forEach((path) => fs.unlink(path));
