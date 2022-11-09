@@ -5,13 +5,27 @@ const StepIndicator = ({
   currentStep,
   steps,
   id,
+  clickHandler,
 }: {
   currentStep: number;
   steps: { text: string; href: string }[];
   id: string;
+  clickHandler?: () => void | undefined;
 }) => {
+  const extraProps = clickHandler
+    ? {
+        tabIndex: 0,
+        'aria-label': 'Click to show job apply tracker',
+        onClick: clickHandler,
+      }
+    : {};
   return (
-    <ul className='flex list-none items-center text-xs'>
+    <ul
+      className={`${
+        clickHandler ? 'cursor-pointer' : ''
+      } flex list-none items-center pt-2 pb-6 text-xs`}
+      {...extraProps}
+    >
       {steps.map((step, index) => {
         return (
           <li
