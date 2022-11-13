@@ -33,7 +33,7 @@ const HomePage: NextPageWithLayout = () => {
           <div className='col-start-2 flex flex-col items-center gap-2 py-4 pb-10 sm:flex-row sm:gap-8 sm:pb-4'>
             <div className='h-[235px] w-[453px] max-w-[80%] md:h-[335px] md:flex-1'>
               <FeatureImg
-                className='h-full w-full animate-slideInLeft text-primary-700 dark:text-primary-900 
+                className='-translateX-[2em]  h-full w-full animate-slideInLeft text-primary-700 opacity-0 dark:text-primary-900 
               [&_*]:origin-center [&_.feature\_svg\_\_gear]:animate-gear [&_.feature\_svg\_\_placeholder]:animate-pulse
               [&_.feature\_svg\_\_profileImg]:animate-ping [&_.feature\_svg\_\_tick]:animate-tick'
               />
@@ -83,13 +83,13 @@ const HomePage: NextPageWithLayout = () => {
               </p>
             </div>
             <div className='h-[335px] w-[453px] max-w-[80%] md:flex-1'>
-              <StepsImg className='h-full w-full text-primary-200 dark:text-primary-800' />
+              <StepsImg className='-translateX-[2em] h-full w-full text-primary-200 opacity-0 dark:text-primary-800 ' />
             </div>
           </BlockWithImage>
 
           <BlockWithImage>
             <div className='h-[300px] w-[453px] max-w-[80%] md:flex-1'>
-              <KeywordImg className='h-full w-full text-primary-200 opacity-0 dark:text-primary-800' />
+              <KeywordImg className='-translateX-[2em] h-full w-full text-primary-200 opacity-0 dark:text-primary-800' />
             </div>
             <div className='md:flex-1'>
               <h2>
@@ -118,14 +118,14 @@ const HomePage: NextPageWithLayout = () => {
               </p>
             </div>
             <div className='h-[250px] w-[453px] max-w-[80%] md:flex-1'>
-              <CoverLetterImg className='h-full w-full text-primary-300 dark:text-primary-800' />
+              <CoverLetterImg className='-translateX-[2em] h-full w-full text-primary-300 opacity-0 dark:text-primary-800' />
             </div>
           </BlockWithImage>
         </section>
         <section className='layoutGrid mt-10 bg-primary-700 p-10 pb-20'>
           <div className='col-start-2 text-center text-white dark:text-slate-300'>
             <div className='mb-2 flex justify-center'>
-              <ChemleonImg className='h-[46px] w-[122px] text-primary-400 dark:text-primary-800 [&_.chemleon\_svg\_\_face]:fill-primary-600 [&_.chemleon\_svg\_\_body]:fill-primary-300 dark:[&_.chemleon\_svg\_\_body]:fill-primary-600 [&_.chemleon\_svg\_\_hat]:fill-primary-900' />
+              <ChemleonImg className='-translateX-[2em] h-[46px] w-[122px] text-primary-400 opacity-0 dark:text-primary-800 [&_.chemleon\_svg\_\_face]:fill-primary-600 [&_.chemleon\_svg\_\_body]:fill-primary-300 dark:[&_.chemleon\_svg\_\_body]:fill-primary-600 [&_.chemleon\_svg\_\_hat]:fill-primary-900' />
             </div>
             <h1>CVizard - Your Personal CV Wizard</h1>
             <p className=' py-8 sm:px-40'>
