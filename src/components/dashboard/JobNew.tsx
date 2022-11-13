@@ -12,8 +12,8 @@ const JobNew = ({
       aria-label={aria}
       tabIndex={0}
       className='flex cursor-pointer flex-col place-content-center items-center bg-slate-500/10 p-14 text-slate-500 transition-all 
-      hover:scale-[1.05] hover:bg-primary-500/10 hover:text-primary-900 hover:shadow-lg
-      focus:scale-[1.05] focus:bg-primary-500/10 focus:text-primary-900 focus:shadow-lg'
+      focus:scale-[1.05] focus:bg-primary-500/10 focus:text-primary-900 focus:shadow-lg
+      hover:scale-[1.05] hover:bg-primary-500/10 hover:text-primary-900 hover:shadow-lg'
       onClick={clickHandler}
     >
       <svg
