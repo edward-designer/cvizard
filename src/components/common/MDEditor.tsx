@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import Button from '@/components/buttons/Button';
 import MDPreviewer from '@/components/common/MDPreviewer';
+
 interface IMDEditor {
   name: string;
   title: string;
@@ -54,6 +55,7 @@ const MDEditor = ({
   useEffect(() => {
     changeEditorWidth();
     window.addEventListener('resize', changeEditorWidth);
+
     return () => window.removeEventListener('resize', changeEditorWidth);
   }, [preview]);
 

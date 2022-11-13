@@ -55,8 +55,12 @@ const CV = ({
       saveToFile({
         id: fileId,
         content,
-      }).then(() => {
-        toast.success('Successfully saved CV.');
+      }).then((msg) => {
+        if (msg === 'error') {
+          toast.warning('Data not saved.');
+        } else {
+          toast.success('Successfully saved job details.');
+        }
         router.push(nextHref);
       });
     } catch {

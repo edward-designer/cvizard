@@ -58,6 +58,7 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
     const interviewNotes = target.interviewNotes.value;
     const offer = target.offer.value;
     const offerNotes = target.offerNotes.value;
+
     try {
       saveToFile({
         id,
@@ -76,8 +77,12 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
         interviewNotes,
         offer,
         offerNotes,
-      }).then(() => {
-        toast.success('Successfully saved job details.');
+      }).then((msg) => {
+        if (msg === 'error') {
+          toast.warning('Data not saved.');
+        } else {
+          toast.success('Successfully saved job details.');
+        }
         router.push(nextHref);
       });
     } catch {
@@ -107,46 +112,57 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
             />
           </div>
         </div>
-        <div className='mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
-          <form className='col-span-2 md:col-start-2' onSubmit={handleSubmit}>
-            <h3 className='mb-4 border-t'>Job Ad</h3>
-            <InputField
-              name='jobTitle'
-              title='Job Title'
-              value={jobDetails.jobTitle}
-            />
-            <InputField
-              name='employer'
-              title='Employer'
-              value={jobDetails.employer}
-            />
-            <InputField
-              name='date'
-              title='Date'
-              type='date'
-              value={jobDetails.date || today}
-            />
-            <InputField name='url' title='Job Ad URL' value={jobDetails.url} />
-            <MDEditor
-              name='description'
-              title='Description'
-              value={jobDetails.description}
-              showPreview={false}
-              className='aspect-square'
-            />
-            <h3 className='mb-4 mt-6 border-t'>Job Application Tracker</h3>
-            {trackerSteps.map(({ text }) => (
-              <FieldSet key={text} name={text} jobDetails={jobDetails} />
-            ))}
-            <div className='col-span-2 text-right md:col-start-2'>
-              <Button
-                variant='primary'
-                type='submit'
-                isLoading={isLoading}
-                className='[&_svg]:transition-all [&_svg]:hover:translate-x-1'
-              >
-                Save <ArrowForwardIcon />
-              </Button>
+        <div className='mt-10'>
+          <form
+            className='grid grid-cols-1 gap-10 md:grid-cols-2'
+            onSubmit={handleSubmit}
+          >
+            <div className='col-span-1'>
+              <h3 className='mb-4 border-t'>Job Ad</h3>
+              <InputField
+                name='jobTitle'
+                title='Job Title'
+                value={jobDetails.jobTitle}
+              />
+              <InputField
+                name='employer'
+                title='Employer'
+                value={jobDetails.employer}
+              />
+              <InputField
+                name='date'
+                title='Date'
+                type='date'
+                value={jobDetails.date || today}
+              />
+              <InputField
+                name='url'
+                title='Job Ad URL'
+                value={jobDetails.url}
+              />
+              <MDEditor
+                name='description'
+                title='Description'
+                value={jobDetails.description}
+                showPreview={false}
+                className='aspect-square'
+              />
+            </div>
+            <div className='col-span-1'>
+              <h3 className='mb-4 border-t'>Job Application Tracker</h3>
+              {trackerSteps.map(({ text }) => (
+                <FieldSet key={text} name={text} jobDetails={jobDetails} />
+              ))}
+              <div className='col-span-2 text-right md:col-start-2'>
+                <Button
+                  variant='primary'
+                  type='submit'
+                  isLoading={isLoading}
+                  className='[&_svg]:transition-all [&_svg]:hover:translate-x-1'
+                >
+                  Save <ArrowForwardIcon />
+                </Button>
+              </div>
             </div>
           </form>
         </div>

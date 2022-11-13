@@ -8,8 +8,8 @@ export const saveToFile = async (uploadData: IJob | ICV) => {
     .then((res) => {
       return res.data;
     })
-    .catch((err) => {
-      return err.message;
+    .catch(() => {
+      return 'error';
     });
 };
 
@@ -22,8 +22,8 @@ export const copyCVFromTemplate = async (
     .then((res) => {
       return res.data;
     })
-    .catch((err) => {
-      return err.message;
+    .catch(() => {
+      return 'error';
     });
 };
 
@@ -33,8 +33,8 @@ export const deleteFile = async (id: string) => {
     .then((res) => {
       return res.data;
     })
-    .catch((err) => {
-      return err.message;
+    .catch(() => {
+      return 'error';
     });
 };
 

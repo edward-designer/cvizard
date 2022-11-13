@@ -6,7 +6,7 @@ import { formatMDwithMeta } from '@/lib/fileHandling';
 import { getKeywordStat } from '@/lib/helper';
 import { readFromJobMD } from '@/lib/reader';
 
-import { postsDirectory } from '@/constant/global';
+import { archiveDirectory, postsDirectory } from '@/constant/global';
 
 export default async function save(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
@@ -89,13 +89,14 @@ export default async function save(req: NextApiRequest, res: NextApiResponse) {
 
     case 'DELETE': {
       const { id } = req.body;
-      const paths = [
-        path.join(postsDirectory, `${id}-job.md`),
-        path.join(postsDirectory, `${id}-cv.md`),
-        path.join(postsDirectory, `${id}-coverLetter.md`),
-      ];
+      const files = [`${id}-job.md`, `${id}-cv.md`, `${id}-coverLetter.md`];
       try {
-        paths.forEach((path) => fs.unlink(path));
+        files.forEach((file) =>
+          fs.rename(
+            path.join(postsDirectory, file),
+            path.join(archiveDirectory, file)
+          )
+        );
         res.status(200).send('success');
       } catch (err) {
         res.status(500).send(err);

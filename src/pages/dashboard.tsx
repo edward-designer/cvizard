@@ -50,7 +50,7 @@ export default function Dashboard({
           </h1>
           <Search search={search} setSearch={setSearch} />
         </div>
-        <div className='mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
+        <div className='mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           <JobNew
             clickHandler={clickHandler}
             label='New Job'

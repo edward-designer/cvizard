@@ -23,11 +23,14 @@
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.11",
     "@next/font": "^13.0.0",
+    "@react-pdf/renderer": "^3.0.1",
     "@uiw/react-md-editor": "^3.19.5",
     "axios": "^1.1.3",
+    "buffer": "^6.0.3",
     "clsx": "^1.2.1",
     "eslint-config-next": "^13.0.0",
     "gray-matter": "^4.0.3",
+    "jspdf": "^2.5.1",
     "next": "^13.0.0",
     "node-fs": "^0.1.7",
     "node-html-markdown": "^1.2.2",
@@ -35,6 +38,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-markdown": "^8.0.3",
+    "react-pdf-html": "^1.1.14",
     "react-toastify": "^9.1.1",
     "remark-gfm": "^3.0.1",
     "stopwords-en": "^0.3.0",
@@ -72,6 +76,11 @@
     "tailwind-scrollbar": "^2.0.1",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.4"
+  },
+  "overrides": {
+    "@react-pdf/renderer": {
+      "react": "$react"
+    }
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [

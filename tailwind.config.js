@@ -95,6 +95,20 @@ module.exports = {
             strokeDasharray: '0 100',
           },
         },
+        slideIn: {
+          '0%': {
+            transform: 'translateX(8em)',
+          },
+          '10%': {
+            transform: 'translateX(0)',
+          },
+          '80%': {
+            transform: 'translateX(0)',
+          },
+          '100%': {
+            transform: 'translateX(8em)',
+          },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
@@ -106,6 +120,7 @@ module.exports = {
         fadeOut: 'fadeOut 1s ease-in-out forwards',
         fadeOutReversed: 'fadeOut 1s ease-in-out reverse forwards',
         circleZeroToScore: 'circleZeroToScore 1s ease-in-out',
+        slideIn: 'slideIn 10s ease-in-out infinite',
       },
     },
   },

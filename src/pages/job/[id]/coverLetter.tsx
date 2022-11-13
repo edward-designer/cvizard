@@ -55,8 +55,12 @@ const CoverLetter = ({
       saveToFile({
         id: fileId,
         content,
-      }).then(() => {
-        toast.success('Successfully saved cover letter.');
+      }).then((msg) => {
+        if (msg === 'error') {
+          toast.warning('Data not saved.');
+        } else {
+          toast.success('Successfully saved job details.');
+        }
         router.push(nextHref);
       });
     } catch {

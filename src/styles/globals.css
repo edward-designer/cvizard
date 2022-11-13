@@ -129,9 +129,11 @@
 
   /* preview */
   #preview {
+    font-family: Helvetica, sans-serif;
     width: 210mm;
-    aspect-ratio: 210/297;
-    padding: 20mm 15mm;
+    height: 297mm;
+    overflow: hidden;
+    padding: 20mm;
     margin: 2em auto;
     background: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -148,7 +150,16 @@
       width: 210mm;
       height: 297mm;
     }
+    body * {
+      visibility: hidden;
+    }
+    #preview * {
+      visibility: visible;
+    }
     #preview {
+      position: absolute;
+      top: 0;
+      left: 0;
       margin: 0;
       border: initial;
       width: initial;

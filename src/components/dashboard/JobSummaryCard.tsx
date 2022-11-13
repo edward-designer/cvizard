@@ -13,6 +13,9 @@ import { trackerSteps } from '@/constant/global';
 
 import { IJob } from '@/types/types';
 
+import ChemleonImg from '~/svg/celebrate.svg';
+import FlagsImg from '~/svg/flags.svg';
+
 const JobSummaryCard = ({
   job,
   clickHandler,
@@ -32,6 +35,12 @@ const JobSummaryCard = ({
     <div
       className={`${className} group relative box-border flex min-h-[380px] flex-col overflow-hidden bg-primary-400/10 text-primary-900 hover:bg-primary-200/50 dark:hover:bg-primary-800/40 [&_div]:leading-4`}
     >
+      {trackerCurrentStep === 4 && (
+        <>
+          <FlagsImg className='absolute h-4 w-full' />
+          <ChemleonImg className='direction-reverse absolute -right-[5em] top-[55%] h-20 w-40 animate-slideIn [&_path:first-child]:transition-all [&_path:first-child]:duration-1000 [&_path:first-child]:[strokeDasharray:300] [&_path:first-child]:[strokeDashoffset:300] [&_path:first-child]:group-hover:[strokeDashoffset:0]' />
+        </>
+      )}
       <div
         className={`${
           showTrackerDetails ? 'max-h-[0px]' : 'max-h-[400px]'
@@ -47,6 +56,7 @@ const JobSummaryCard = ({
               <CloseIcon />
             </button>
           )}
+
           <div className='flex-1'>
             <div className='text-[0.75em] text-text-primary'>{job.date}</div>
             <h2 className='font-semi-bold my-1 text-lg leading-4 text-slate-700'>
@@ -64,7 +74,7 @@ const JobSummaryCard = ({
             </Link>
             <Link
               href={`/job/${job.id}/coverLetter`}
-              className='flex-1 hover:brightness-125 hover:drop-shadow hover:hue-rotate-15 hover:filter'
+              className='flex flex-1 place-content-center hover:brightness-125 hover:drop-shadow hover:hue-rotate-15 hover:filter'
               title={`keywords analysis for Cover Letter: score is ${job.scoreCover}`}
             >
               <ScoreCircle score={job.scoreCover} name='Cover Letter' />
@@ -82,7 +92,7 @@ const JobSummaryCard = ({
             </ButtonLink>
 
             <ButtonLink
-              href={`/job/${job.id}`}
+              href={`/job/${job.id}/preview`}
               variant='ghost'
               className='block flex-1 text-center text-text-primary opacity-0 transition-all focus:opacity-100 group-hover:opacity-100 [&_svg]:hover:scale-110 '
               aria-label={`download the PDF files of the CV and Cover Letter for ${job.jobTitle} at ${job.employer}`}
@@ -103,7 +113,7 @@ const JobSummaryCard = ({
           className={`${
             showTrackerDetails
               ? 'max-h-[320px] duration-500'
-              : 'duration-50 max-h-[0px]'
+              : 'max-h-0 duration-75'
           } mt-2 -mr-4 overflow-y-scroll pr-4 transition-[max-height] ease-in-out 
           scrollbar-thin scrollbar-track-primary-500/10 scrollbar-thumb-primary-600/20`}
         >
