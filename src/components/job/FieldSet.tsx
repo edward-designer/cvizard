@@ -25,9 +25,8 @@ const FieldSet = ({ name, jobDetails }: IFieldSet) => {
         name={`${name}Notes`}
         placeholder='Write your notes here.'
         className='mb-2 w-full rounded-md border text-text-primary outline-none dark:bg-bg-primary'
-      >
-        {jobDetails[`${name}Notes`] || ''}
-      </textarea>
+        defaultValue={jobDetails[`${name}Notes`] || ''}
+      />
     </fieldset>
   );
 };

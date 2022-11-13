@@ -11,7 +11,7 @@ export default function useIntersectionObserver(
       entries.forEach((entry: IntersectionObserverEntry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add(...addClass);
-          entry.target.classList.remove('opacity-0', ...removeClass);
+          entry.target.classList.remove(...removeClass);
         } else {
           entry.target.classList.add(...removeClass);
           entry.target.classList.remove(...addClass);

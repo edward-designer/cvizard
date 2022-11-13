@@ -70,14 +70,18 @@ const JobSummaryCard = ({
               className='flex flex-1 place-content-center hover:brightness-125 hover:drop-shadow hover:hue-rotate-15 hover:filter'
               title={`keywords analysis for CV: score is ${job.scoreCover}`}
             >
-              <ScoreCircle score={job.scoreCV} name='CV' />
+              <div className='flex-1'>
+                <ScoreCircle score={job.scoreCV} name='CV' />
+              </div>
             </Link>
             <Link
               href={`/job/${job.id}/coverLetter`}
               className='flex flex-1 place-content-center hover:brightness-125 hover:drop-shadow hover:hue-rotate-15 hover:filter'
               title={`keywords analysis for Cover Letter: score is ${job.scoreCover}`}
             >
-              <ScoreCircle score={job.scoreCover} name='Cover Letter' />
+              <div className='flex-1'>
+                <ScoreCircle score={job.scoreCover} name='Cover Letter' />
+              </div>
             </Link>
           </div>
 
