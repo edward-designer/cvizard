@@ -9,7 +9,7 @@ const ScoreCircle = ({
 }) => {
   return (
     <svg
-      className={`${
+      className={`flex-1 ${
         Number.isInteger(score)
           ? '[&_#percentage]:fill-slate-600 [&_#percentage]:dark:fill-primary-700'
           : 'text-transparent [&_#percentage]:fill-slate-300 [&_#percentage]:dark:fill-slate-600'

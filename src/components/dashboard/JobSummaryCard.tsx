@@ -64,24 +64,20 @@ const JobSummaryCard = ({
             </h2>
             <div className='text-text-primary'>@ {job.employer}</div>
           </div>
-          <div className='my-4 flex flex-1 gap-0 dark:text-primary-700  md:gap-2'>
+          <div className='my-4 flex flex-1 gap-0 dark:text-primary-700 md:gap-2'>
             <Link
               href={`/job/${job.id}/cv`}
               className='flex flex-1 place-content-center hover:brightness-125 hover:drop-shadow hover:hue-rotate-15 hover:filter'
               title={`keywords analysis for CV: score is ${job.scoreCover}`}
             >
-              <div className='flex-1'>
-                <ScoreCircle score={job.scoreCV} name='CV' />
-              </div>
+              <ScoreCircle score={job.scoreCV} name='CV' />
             </Link>
             <Link
               href={`/job/${job.id}/coverLetter`}
               className='flex flex-1 place-content-center hover:brightness-125 hover:drop-shadow hover:hue-rotate-15 hover:filter'
               title={`keywords analysis for Cover Letter: score is ${job.scoreCover}`}
             >
-              <div className='flex-1'>
-                <ScoreCircle score={job.scoreCover} name='Cover Letter' />
-              </div>
+              <ScoreCircle score={job.scoreCover} name='Cover Letter' />
             </Link>
           </div>
 
