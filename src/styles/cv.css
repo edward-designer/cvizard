@@ -1,0 +1,19 @@
+#preview > div {
+  border-top: 10px solid var(--color-primary-900);
+  padding: 15mm 20mm;
+}
+#preview h1 {
+  font-size: 2em;
+  color: var(--color-primary-900);
+  line-height: 1.5em;
+}
+#preview img {
+  display: inline-block;
+  max-height: 1em;
+  max-width: 1em;
+  fill: var(--color-primary-900);
+}
+
+#preview h2 {
+  font-size: 1.4em;
+}

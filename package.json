@@ -22,7 +22,7 @@
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.11",
-    "@next/font": "^13.0.0",
+    "@next/font": "^13.0.4",
     "@react-pdf/renderer": "^3.0.1",
     "@uiw/react-md-editor": "^3.19.5",
     "axios": "^1.1.3",

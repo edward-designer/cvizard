@@ -25,7 +25,7 @@
   --color-primary-800: rgb(var(--tw-color-primary-800)); /* #075985 */
   --color-primary-900: rgb(var(--tw-color-primary-900)); /* #0c4a6e */
   /* #endregion  /**======== Primary Color =========== */
-  --tw-text-primary: 20 20 20;
+  --tw-text-primary: 50 50 50;
   --text-primary: rgb(var(--tw-text-primary));
   --tw-bg-primary: 255 255 255;
   --bg-primary: rgb(var(--tw-bg-primary));
@@ -66,12 +66,12 @@
 
   h1,
   .h1 {
-    @apply font-primary text-2xl font-bold md:text-4xl;
+    @apply font-primary text-2xl font-bold md:text-6xl;
   }
 
   h2,
   .h2 {
-    @apply font-primary text-xl font-bold md:text-3xl;
+    @apply font-primary text-xl font-bold md:text-4xl;
   }
 
   h3,
@@ -133,7 +133,7 @@
     width: 210mm;
     height: 297mm;
     overflow: hidden;
-    padding: 20mm;
+    padding: 0;
     margin: 2em auto;
     background: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);

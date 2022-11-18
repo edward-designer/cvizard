@@ -1,6 +1,8 @@
 import { forwardRef } from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+
+/*import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';*/
+import { drawdown } from '@/lib/drawdown';
 
 interface IMDPreviewer {
   content: string;
@@ -15,7 +17,7 @@ const MDPreviewer = forwardRef<Ref, IMDPreviewer>(({ content }, ref) => {
       ref={ref}
       className='border text-text-primary outline-none dark:bg-bg-primary'
     >
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+      <div>{drawdown(content)}</div>
     </div>
   );
 });

@@ -1,3 +1,4 @@
+import { Antonio } from '@next/font/google';
 import clsx from 'clsx';
 import { ReactNode, useEffect, useState } from 'react';
 
@@ -6,6 +7,12 @@ import Header from '@/components/layout/Header';
 
 import { colorList } from '@/constant/themeColor';
 import { useThemeContext } from '@/context/theme';
+
+const antonio = Antonio({
+  subsets: ['latin'],
+  weight: '700',
+  variable: '--font-antonio',
+});
 
 export default function Layout({
   children,
@@ -43,9 +50,9 @@ export default function Layout({
     >
       <div className='layoutGrid bg-bg-primary'>
         <div
-          className={`${
-            fontLoaded ? 'opacity-100' : 'opacity-0'
-          } fixed -ml-2 -mt-1 font-antonio text-[8em] font-thin leading-[0.75em] text-primary-800/10 transition-all duration-1000 md:text-[14em]`}
+          className={`${fontLoaded ? 'opacity-100' : 'opacity-0'} ${
+            antonio.variable
+          } fixed -ml-2 -mt-1 font-antonio text-[8em] font-bold leading-[0.75em] text-primary-800/10 transition-all duration-1000 md:text-[14em]`}
         >
           {bgText}
         </div>

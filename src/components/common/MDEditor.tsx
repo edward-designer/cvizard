@@ -1,9 +1,9 @@
 import EditIcon from '@mui/icons-material/Edit';
 import PreviewIcon from '@mui/icons-material/Preview';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 import Button from '@/components/buttons/Button';
-import MDPreviewer from '@/components/common/MDPreviewer';
+import PDFView from '@/components/common/PDFView';
 
 interface IMDEditor {
   name: string;
@@ -24,7 +24,6 @@ const MDEditor = ({
 }: IMDEditor) => {
   const [val, setVal] = useState(value);
   const [preview, setPreview] = useState(false);
-  const editorRef = useRef<HTMLDivElement | null>(null);
 
   const handleEditorChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (changeHandler) {
@@ -33,31 +32,9 @@ const MDEditor = ({
     setVal(e.target.value);
   };
 
-  const changeEditorWidth = () => {
-    const windowWidth =
-      document.querySelector('form')?.offsetWidth || window.innerWidth;
-    const a4WidthInPixels = 793 + 30;
-    const a4HeightInPixels = 1123;
-    let scaleRatio = windowWidth / a4WidthInPixels;
-    if (scaleRatio > 1) scaleRatio = 1;
-    if (editorRef.current) {
-      editorRef.current.style.transform = `scale(${scaleRatio})`;
-      editorRef.current.style.marginBottom = `${
-        -a4HeightInPixels * (1 - scaleRatio) + 30
-      }px`;
-    }
-  };
-
   const buttonClickHandler = () => {
     setPreview(!preview);
   };
-
-  useEffect(() => {
-    changeEditorWidth();
-    window.addEventListener('resize', changeEditorWidth);
-
-    return () => window.removeEventListener('resize', changeEditorWidth);
-  }, [preview]);
 
   return (
     <>
@@ -79,7 +56,7 @@ const MDEditor = ({
             </Button>
           </div>
           <div className='mb-4 bg-primary-900/10 p-2 dark:bg-primary-900/50'>
-            <MDPreviewer ref={editorRef} content={val} />
+            <PDFView val={[val]} docType='' docId='' previewOnly={true} />
           </div>
           <textarea
             name={name}

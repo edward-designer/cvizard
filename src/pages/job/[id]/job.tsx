@@ -50,14 +50,14 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
     const description = target.description.value;
     const scoreCV = jobDetails.scoreCV;
     const scoreCover = jobDetails.scoreCover;
-    const init = target.init.value;
-    const initNotes = target.initNotes.value;
-    const apply = target.apply.value;
-    const applyNotes = target.applyNotes.value;
-    const interview = target.interview.value;
-    const interviewNotes = target.interviewNotes.value;
-    const offer = target.offer.value;
-    const offerNotes = target.offerNotes.value;
+    const init = target.init?.value ?? '';
+    const initNotes = target.initNotes?.value ?? '';
+    const apply = target.apply?.value ?? '';
+    const applyNotes = target.applyNotes?.value ?? '';
+    const interview = target.interview?.value ?? '';
+    const interviewNotes = target.interviewNotes?.value ?? '';
+    const offer = target.offer?.value ?? '';
+    const offerNotes = target.offerNotes?.value ?? '';
 
     try {
       saveToFile({
@@ -153,16 +153,24 @@ const Job = ({ jobDetails }: { jobDetails: IJob }) => {
               {trackerSteps.map(({ text }) => (
                 <FieldSet key={text} name={text} jobDetails={jobDetails} />
               ))}
-              <div className='col-span-2 text-right md:col-start-2'>
-                <Button
-                  variant='primary'
-                  type='submit'
-                  isLoading={isLoading}
-                  className='[&_svg]:transition-all [&_svg]:hover:translate-x-1'
-                >
-                  Save <ArrowForwardIcon />
-                </Button>
-              </div>
+            </div>
+            <div className='col-span-2 flex flex-row-reverse gap-2 '>
+              <Button
+                variant='outline'
+                type='reset'
+                onClick={() => router.reload()}
+                className=''
+              >
+                Reset
+              </Button>
+              <Button
+                variant='primary'
+                type='submit'
+                isLoading={isLoading}
+                className='[&_svg]:transition-all [&_svg]:hover:translate-x-1'
+              >
+                Save <ArrowForwardIcon />
+              </Button>
             </div>
           </form>
         </div>

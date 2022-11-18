@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         primary: ['Inter', ...fontFamily.sans],
-        antonio: ['Antonio', ...fontFamily.sans],
+        antonio: ['var(--font-antonio)', ...fontFamily.sans],
       },
       colors: {
         primary: {
@@ -95,16 +95,10 @@ module.exports = {
         },
         slideIn: {
           '0%': {
-            transform: 'translateX(8em)',
-          },
-          '10%': {
-            transform: 'translateX(0)',
-          },
-          '80%': {
             transform: 'translateX(0)',
           },
           '100%': {
-            transform: 'translateX(8em)',
+            transform: '-translateX(10em)',
           },
         },
       },
@@ -118,7 +112,7 @@ module.exports = {
         fadeOut: 'fadeOut 1s ease-in-out forwards',
         fadeOutReversed: 'fadeOut 1s ease-in-out reverse forwards',
         circleZeroToScore: 'circleZeroToScore 1s ease-in-out',
-        slideIn: 'slideIn 10s ease-in-out infinite',
+        slideIn: 'slideIn 5s ease-in-out forwards',
       },
     },
   },

@@ -117,9 +117,6 @@ export function drawdown(src) {
   replace(rx_gt, '&gt;');
   replace(rx_space, '  ');
 
-  // new line
-  replace(/[\s]{2}$|^\\$/gm, '<br />');
-
   // blockquote
   src = blockquote(src);
 
@@ -189,6 +186,10 @@ export function drawdown(src) {
   replace(rx_stash, function (all) {
     return stash[parseInt(all)];
   });
+
+  // new line
+  replace(/[\s]{2}$|^\\$/gm, '<br />');
+  replace(/&NewLine;/g, '<br />');
 
   return src.trim();
 }

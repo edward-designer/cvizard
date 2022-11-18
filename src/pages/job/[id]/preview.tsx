@@ -11,7 +11,7 @@ import { appSteps } from '@/constant/global';
 
 import { ICV } from '@/types/types';
 
-const CV = ({
+const Preview = ({
   cvFromServer,
   coverLetterFromServer,
 }: {
@@ -39,12 +39,12 @@ const CV = ({
         </div>
 
         <div className='mt-10 grid grid-cols-2 gap-4'>
-          <PDFView val={[cvFromServer.content]} docId={id} docType='CV' />
           <PDFView
             val={[coverLetterFromServer.content]}
             docId={id}
             docType='Cover Letter'
           />
+          <PDFView val={[cvFromServer.content]} docId={id} docType='CV' />
         </div>
         <div className='col-span-2 mb-10 bg-primary-800/10 pt-6'>
           <PDFView
@@ -59,7 +59,7 @@ const CV = ({
   );
 };
 
-export default CV;
+export default Preview;
 
 export async function getServerSideProps({
   params: { id },

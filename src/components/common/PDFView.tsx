@@ -12,9 +12,16 @@ interface IPDFView {
   docType: string;
   docId: string;
   linkOnly?: boolean;
+  previewOnly?: boolean;
 }
 
-const PDFView = ({ val, docType, docId, linkOnly = false }: IPDFView) => {
+const PDFView = ({
+  val,
+  docType,
+  docId,
+  linkOnly = false,
+  previewOnly = false,
+}: IPDFView) => {
   const [isClient, setIsClient] = useState(false);
   const [primaryColor, setPrimaryColor] = useState('rgb(0 0 0)');
   const { color } = useThemeContext();
@@ -27,6 +34,7 @@ const PDFView = ({ val, docType, docId, linkOnly = false }: IPDFView) => {
       setPrimaryColor(
         getComputedStyle(previewRef.current)
           .getPropertyValue('--color-primary-900')
+          .replace('( ', '(')
           .trim()
       );
   }, [color]);
@@ -47,26 +55,28 @@ const PDFView = ({ val, docType, docId, linkOnly = false }: IPDFView) => {
               {PDFContentComponent}
             </PDFViewer>
           )}
-          <div className='pb-6 text-center'>
-            <PDFDownloadLink
-              document={PDFContentComponent}
-              fileName={`${docId}-${docType.toLowerCase().replace(' ', '')}`}
-            >
-              {val.length === 1 ? (
-                <Button
-                  variant='ghost'
-                  className='text-slate-500 hover:text-primary-500'
-                >
-                  <DownloadIcon /> {docType} only
-                </Button>
-              ) : (
-                <Button>
-                  <DownloadIcon className='text-primary-900' />
-                  Download CV + Cover Letter
-                </Button>
-              )}
-            </PDFDownloadLink>
-          </div>
+          {!previewOnly && (
+            <div className='pb-6 text-center'>
+              <PDFDownloadLink
+                document={PDFContentComponent}
+                fileName={`${docId}-${docType.toLowerCase().replace(' ', '')}`}
+              >
+                {val.length === 1 ? (
+                  <Button
+                    variant='ghost'
+                    className='text-slate-500 hover:text-primary-500'
+                  >
+                    <DownloadIcon /> {docType} only
+                  </Button>
+                ) : (
+                  <Button>
+                    <DownloadIcon className='text-primary-900' />
+                    Download Cover Letter + CV
+                  </Button>
+                )}
+              </PDFDownloadLink>
+            </div>
+          )}
         </>
       )}
     </div>

@@ -38,7 +38,7 @@ const JobSummaryCard = ({
       {trackerCurrentStep === 4 && (
         <>
           <FlagsImg className='absolute h-4 w-full' />
-          <ChemleonImg className='direction-reverse absolute -right-[5em] top-[55%] h-20 w-40 animate-slideIn [&_path:first-child]:transition-all [&_path:first-child]:duration-1000 [&_path:first-child]:[strokeDasharray:300] [&_path:first-child]:[strokeDashoffset:300] [&_path:first-child]:group-hover:[strokeDashoffset:0]' />
+          <ChemleonImg className='absolute -right-[5em] top-[55%] h-20 w-40 translate-x-[10em] transition-all duration-1000 group-hover:translate-x-0 [&_path:first-child]:transition-all [&_path:first-child]:delay-1000 [&_path:first-child]:duration-300 [&_path:first-child]:[strokeDasharray:300] [&_path:first-child]:[strokeDashoffset:300] [&_path:first-child]:group-hover:[strokeDashoffset:0]' />
         </>
       )}
       <div
@@ -59,7 +59,7 @@ const JobSummaryCard = ({
 
           <div className='flex-1'>
             <div className='text-[0.75em] text-text-primary'>{job.date}</div>
-            <h2 className='font-semi-bold my-1 text-lg leading-4 text-slate-700'>
+            <h2 className='my-1 text-2xl font-bold leading-4 text-slate-700'>
               {job.jobTitle}
             </h2>
             <div className='text-text-primary'>@ {job.employer}</div>

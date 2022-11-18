@@ -59,19 +59,19 @@ export const formatMDwithMeta = (data: IJob) => {
 
   const fileContentsJob = `---
 date: '${date || ''}'
-jobTitle: '${jobTitle || ''}'
-employer: '${employer || ''}'
-url: '${url || ''}'
+jobTitle: ${jobTitle || ''}
+employer: ${employer || ''}
+url: ${url || ''}
 scoreCV: ${scoreCV}
 scoreCover: ${scoreCover}
 init: '${init || ''}'
-initNotes: '${initNotes || ''}'
+initNotes: ${initNotes || ''}
 apply: '${apply || ''}'
-applyNotes: '${applyNotes || ''}'
+applyNotes: ${applyNotes || ''}
 interview: '${interview || ''}'
-interviewNotes: '${interviewNotes || ''}'
+interviewNotes: ${interviewNotes || ''}
 offer: '${offer || ''}'
-offerNotes: '${offerNotes || ''}'
+offerNotes: ${offerNotes || ''}
 ---
 ${description || ''}`;
 

@@ -74,12 +74,6 @@ export default function Seo(props: SeoProps) {
         content='/favicon/ms-icon-144x144.png'
       />
       <meta name='theme-color' content='#ffffff' />
-      <link
-        rel='preload'
-        href='/fonts/Antonio-VariableFont_wght.ttf'
-        as='font'
-        crossOrigin='anonymous'
-      />
     </Head>
   );
 }
