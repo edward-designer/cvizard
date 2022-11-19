@@ -2,6 +2,8 @@
 
 ![CVizard App](https://raw.githubusercontent.com/edward-designer/cvizard/main/public/images/cvizard.jpg)
 
+> **_Note: the online demo [https://cvizard.vercel.app](https://cvizard.vercel.app) is a readonly version, data changed will NOT be saved_**
+
 ## Why CVizard
 
 Obviously, I need to apply for web development jobs and I need CVs and cover letters. A lot of them. There are currently no solutions on the market that fulfuill the following criteria:
