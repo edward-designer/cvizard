@@ -34,6 +34,7 @@ const PDFContent = ({ pages, primaryColor }: IPDFContent) => {
 
   // styling for PDF elements
   // some styling must be done on the embedded stylesheet
+  // reference: https://react-pdf.org/styling and https://www.npmjs.com/package/react-pdf-html
   const styles = {
     page: {
       width: '210mm',
