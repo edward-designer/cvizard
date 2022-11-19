@@ -19,7 +19,7 @@ const PDFContent = ({ pages, primaryColor }: IPDFContent) => {
     family: 'Oswald',
     fonts: [
       {
-        src: 'http://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf',
+        src: 'https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf',
         fontWeight: 'normal',
       },
     ],
