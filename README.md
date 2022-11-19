@@ -1,6 +1,6 @@
 # CVizard - DIY your CV + Cover Letter for free
 
-![CVizard App](https://drive.google.com/file/d/1qSf6xm9_Y2YR-nlMPMCON7LDnOhxoKDE/view)
+![CVizard App](https://raw.githubusercontent.com/edward-designer/cvizard/main/public/images/cvizard.jpg)
 
 ## Why CVizard
 
