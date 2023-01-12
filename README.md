@@ -56,7 +56,7 @@ Obviously, I need to apply for web development jobs and I need CVs and cover let
 - Typescript - for type-checking to reduce bugs
 - TailwindCSS - fast styling and better CSS rendering performance
 - MUI - for icons only
-- Jest/React Testing Library/Cypress for automated testing
+- Jest/React Testing Library for automated testing
 - TDD for keyword functions
 - Figma - for [logo and UI design](https://www.figma.com/file/bYF7ORx4A9K71xMye006fZ/CVizard?node-id=107%3A72534&t=baIFEMjvq12BDlxY-1)
 - CI/CD for automated testing/linting/prettier/type checking using github actions
@@ -64,3 +64,4 @@ Obviously, I need to apply for web development jobs and I need CVs and cover let
 ## Todo
 
 - implement several design templates for users to choose from
+- Cypress for end-to-end testing the user journey
